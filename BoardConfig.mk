@@ -21,9 +21,10 @@ USE_CAMERA_STUB := true
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
-# Default values, if not overridden else where.
+# Bluetooth with legacy jni fix
 TARGET_BOARD_INFO_FILE ?= device/samsung/tuna/board-info.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth
+BOARD_HAVE_LEGACY_BLUETOOTH_BCM := true
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -57,6 +58,9 @@ TARGET_RECOVERY_UI_LIB := librecovery_ui_tuna
 # device-specific extensions to the updater binary
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tuna
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/tuna
+
+# use the new recovery.fstab format
+RECOVERY_FSTAB_VERSION = 2
 
 TARGET_RECOVERY_FSTAB = device/samsung/tuna/fstab.tuna
 TARGET_USERIMAGES_USE_EXT4 := true
